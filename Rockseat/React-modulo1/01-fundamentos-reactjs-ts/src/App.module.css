@@ -1,0 +1,27 @@
+.arapper{
+
+  max-width: 70rem;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+
+
+  display: grid;
+  /*Primeria coluna fixa e segunda coluna vai se ajustar ao que estiver na tela 1fr para isso ---
+  gap espacamento entre as colunas --
+  align-itemns - alinhadaos pro top*/
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items:flex-start;
+}
+
+@media (max-width: 700px){
+
+  html{
+    font-size: 87.5%;
+  }
+  .arapper{
+    grid-template-columns: 1fr;
+  }
+
+}
