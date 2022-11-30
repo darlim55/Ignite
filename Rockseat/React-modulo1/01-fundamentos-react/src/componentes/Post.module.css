@@ -80,16 +80,15 @@
 }
 
 .form textarea{
-  width: 100%;
-  background-color: var(--gray-900);
-  border: 0;
-  resize: none;
-  height: 6rem;
+  flex: 1;
   padding: 1rem;
-  border-radius: 8px;
+  width: 100%;
+
+  background: var(--gray-500);
   color: var(--gray-100);
-  line-height: 1.4;
-  margin-top: 1rem;
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  outline: none;
 
 }
 

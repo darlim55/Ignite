@@ -1,0 +1,54 @@
+.header{
+  width: 46rem;
+  height: 3.3rem;
+  display: grid;
+  margin: -1rem auto auto auto;
+  /*Primeria coluna fixa e segunda coluna vai se ajustar ao que estiver na tela 1fr para isso ---
+  gap espacamento entre as colunas --
+  align-itemns - alinhadaos pro top*/
+  grid-template-columns: 638px 1fr;
+  gap: 0.5rem;
+  align-items:flex-start;
+}
+
+input{
+  flex: 1;
+  padding: 1rem;
+  width: 100%;
+
+  background: var(--gray-500);
+  color: var(--gray-100);
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--purple-dark);
+}
+
+
+.button {
+  color: var(--gray-100);
+  background: var(--blue-dark);
+  border: none;
+  font-size: 0.875rem;
+  font-weight: bold;
+  border-radius: 8px;
+  
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  cursor: pointer;
+
+  transition: background .1s;
+}
+
+.button img {
+  width: 1rem;
+}
+
+.button:hover {
+  background: var(--blue-300);
+}
