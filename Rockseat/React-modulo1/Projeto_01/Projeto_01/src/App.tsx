@@ -3,21 +3,16 @@ import { Header } from './componentes/Header'
 import { Search } from './componentes/ Search'
 import { Menu } from './componentes/Menu'
 
-
-
-
-export function App(){
+export function App() {
   return (
     <div>
       <header>
-        <Header/>
+        <Header />
       </header>
 
       <main>
-        <Search/>
-        <Menu/>
+        <Search />
       </main>
     </div>
-
   )
 }

@@ -4,7 +4,7 @@
 }
 
 .options{
-  margin: 5.7rem auto auto auto;
+  margin: 1.7rem auto auto auto;
   display: flex;
   width: 46rem;
   justify-content: space-between;
@@ -43,4 +43,55 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.taks{
+  width: 46rem;
+  height: 4.5rem;
+  margin-top: 1rem;
+  background-color: var(--gray-400);
+
+
+}
+
+.taks li{
+  list-style: none;
+  display: grid;
+  
+
+  /*Primeria coluna fixa e segunda coluna vai se ajustar ao que estiver na tela 1fr para isso ---
+  gap espacamento entre as colunas --
+  align-itemns - alinhadaos pro top*/
+  grid-template-columns: 45px 1fr 1fr;
+  gap: 1rem;
+}
+
+.taks label{
+  width: 1rem;
+  height: 1rem; 
+  margin: 1.7rem auto auto 1.5rem;
+  border-radius: 2px blue;
+}
+
+.taks P{
+  width: 37.5rem;
+  height: 2.5rem; 
+  margin: 1.6rem auto auto 0;
+  color: #fff;
+}
+
+.taks button{
+  width: 1.5rem;
+  height: 1.5rem;  font-weight: 600;
+  border-radius: 8px;
+  border: 0;
+  color: #fff;
+  background: var(--gray-400);
+  margin: 1.6rem auto auto 0;
+}
+
+.completed{
+  text-decoration:line-through;
+  opacity: 0.6;
+ 
 }
