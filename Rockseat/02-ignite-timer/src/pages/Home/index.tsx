@@ -14,7 +14,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 interface Cycle {
   id: string
   task: string
-  minutesAmonut: number
+  minutesAmount: number
   startDate: Date
   interruptedDate?: Date
   finishedDate?: Date
@@ -33,7 +33,7 @@ export const CyclesContext = createContext({} as CyclesContextType)
 // guarda informoces do contador
 const newcyleformvalidationschema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
-  minutesAmonut: zod.number().min(5).max(60),
+  minutesAmount: zod.number().min(5).max(60),
 })
 
 type NewCycleFormData = zod.infer<typeof newcyleformvalidationschema>
@@ -50,7 +50,7 @@ export function Home() {
     resolver: zodResolver(newcyleformvalidationschema),
     defaultValues: {
       task: '',
-      minutesAmonut: 0,
+      minutesAmount: 0,
     },
   })
 
@@ -69,7 +69,7 @@ export function Home() {
     const newCycle: Cycle = {
       id,
       task: data.task,
-      minutesAmonut: data.minutesAmonut,
+      minutesAmount: data.minutesAmount,
       startDate: new Date(),
     }
 
@@ -82,11 +82,11 @@ export function Home() {
 
   function markCurrentCycleAsFinished() {
     setCycles((state) =>
-      state.map((cycles) => {
-        if (cycles.id === activeCycleId) {
-          return { ...cycles, finishedDate: new Date() }
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, finishedDate: new Date() }
         } else {
-          return cycles
+          return cycle
         }
       }),
     )
@@ -94,11 +94,11 @@ export function Home() {
 
   function handleInterruptCycle() {
     setCycles((state) =>
-      state.map((cycles) => {
-        if (cycles.id === activeCycleId) {
-          return { ...cycles, interruptedDate: new Date() }
+      state.map((cycle) => {
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
         } else {
-          return cycles
+          return cycle
         }
       }),
     )
@@ -110,7 +110,7 @@ export function Home() {
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
+      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
         <CyclesContext.Provider
           value={{
             activeCycle,
