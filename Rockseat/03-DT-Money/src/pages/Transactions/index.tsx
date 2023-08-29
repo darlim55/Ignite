@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Header } from "../../componentes/Header";
 import { Summary } from "../../componentes/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from "./styles";
 import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 export function Transactions() {
 
@@ -13,9 +14,10 @@ export function Transactions() {
     <div>
       <Header />
       <Summary />
-
+    
       <TransactionsContainer>
-        <SearchForm/>
+      <SearchForm/> 
+     
         <TransactionsTable>
        
           <tbody>
@@ -27,11 +29,12 @@ export function Transactions() {
                 <td width="50%">{transactions.description}</td>
                 <td>
                   <PriceHighlight variant={transactions.type}>
-                    {transactions.price}
+                  {transactions.type === 'outcome' && '- '}
+                    {priceFormatter.format(transactions.price)}
                   </PriceHighlight>
                 </td>
                 <td>{transactions.category}</td>
-                <td>{transactions.createdAt}</td>
+                <td>{dateFormatter.format(new Date(transactions.createdAt))}</td>
               </tr>
 
               )

@@ -22,7 +22,7 @@ interface Transaction {
     children: ReactNode
   }
 //cria contexto
-  export const TransactionsContext = createContext({} as TransactionContextType)
+export const TransactionsContext = createContext({} as TransactionContextType)
 
 export function TransactionsProvider({children}: TransactionsProviderProps){
     const [transactions, setTransactions] = useState<Transaction[]>([]);
