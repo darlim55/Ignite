@@ -4,8 +4,10 @@ import { useRouter } from "next/router"
 import Stripe from "stripe"
 import { stripe } from "../../lib/stripe";
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios, { Axios } from "axios";
+import Head from "next/head";
+import { CarContext } from "@/contexts/useCar";
 
 
 interface ProductProps {
@@ -20,12 +22,19 @@ interface ProductProps {
   }
 
 export default function Product({product}: ProductProps) {
-
+  
+  const {adicionarItemAoCarrinho} = useContext(CarContext)
+  const router = useRouter();
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
-   async function handleBuyButton()
+  const handleAddProducy = () => {
+    adicionarItemAoCarrinho(product.defaultPriceId,1);
+    router.push('/');
+  };
+
+
+  /* async function handleBuyButton()
   {
-    console.log(product)
     try{
         setIsCreatingCheckoutSession(true)
         const response = await axios.post('/api/checkout',{
@@ -41,23 +50,29 @@ export default function Product({product}: ProductProps) {
 
         alert('Falha ao redirecionar ao checkout!')
     }
-  }
+  }*/
   return (
+
+    <>
+    <Head>
+      <title>{product.name} | Ignite Shop</title>
+    </Head>
+
     <ProductContainer>
-    <ImageContainer>
-        <Image src={product.imageUrl} height={480} width={520} alt="" />
-    </ImageContainer>
-    <ProductDetails>
-      <h1>{product.name}</h1>
-      <span>{product.price}</span>
+        <ImageContainer>
+          <Image src={product.imageUrl} height={480} width={520} alt="" />
+        </ImageContainer>
+        <ProductDetails>
+          <h1>{product.name}</h1>
+          <span>{product.price}</span>
 
-      <p>{product.description}</p>
+          <p>{product.description}</p>
 
-      <button onClick={handleBuyButton}>
-        Comprar agora
-      </button>
-    </ProductDetails>
-  </ProductContainer>
+          <button onClick={handleAddProducy}>
+            Comprar agora
+          </button>
+        </ProductDetails>
+      </ProductContainer></>
   )
 }
 
@@ -77,7 +92,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
     });
   
     const price = product.default_price as Stripe.Price;
-    console.log(price.id)
+
     return {
       props: {
         product: {

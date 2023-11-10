@@ -1,3 +1,4 @@
+import { relative } from 'path'
 import {styled} from '../styles'
 
 
@@ -14,4 +15,30 @@ export const Header = styled('header', {
   width: '100%',
   maxWidth: 1180,
   margin: '0 auto',
+  display: 'flex',
+  justifyContent: 'space-between'
 })
+
+export const ImageContainer = styled('button',{
+  position: 'relative',
+  cursor: 'pointer',
+  background: 'none',
+  border: 0
+})
+
+export const CounterCar = styled('div', {
+
+  position: "absolute",
+  top: "-0.5rem",
+  alignItems: 'center',
+  right: "-0.5rem",
+  background: "$green500",
+  color: 'White',
+  padding: "5px 10px",
+  borderRadius: "60%",
+  borderColor: '$grey700',
+  border: '1px solid $gray800 '
+
+
+})
+  
