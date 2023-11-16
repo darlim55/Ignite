@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
+    "@radix-ui/themes": "^2.0.1",
     "@stitches/react": "^1.2.8",
     "axios": "^1.6.1",
     "framer-motion": "^10.16.4",
