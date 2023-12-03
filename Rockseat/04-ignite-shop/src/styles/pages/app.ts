@@ -19,7 +19,7 @@ export const Header = styled('header', {
   justifyContent: 'space-between'
 })
 
-export const ImageContainer = styled('button',{
+export const ImageContainer = styled('div',{
   position: 'relative',
   cursor: 'pointer',
   background: 'none',

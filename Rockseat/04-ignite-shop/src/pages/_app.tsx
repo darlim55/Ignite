@@ -4,13 +4,14 @@ import type { AppProps } from 'next/app';
 import logoImg from '../assets/logo.svg';
 import Image from 'next/image';
 import car from '../assets/car.svg'
-import { useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { CarContext, CarShopContextProvider } from '@/contexts/useCar';
 import { CarShop } from '@/Componentes/CarShop/CarShop';
 import * as Dialog from '@radix-ui/react-dialog'
 import ModalCar from '@/Componentes/ModalCar/ModalCar';
 
 globalStyles();
+
 
 export default function App({ Component, pageProps }: AppProps) {  
   return (
@@ -21,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
             <Dialog.Root>
               <Dialog.Trigger asChild>
-                <CarShop/>
+                <button><CarShop/></button>
               </Dialog.Trigger>
             
             <ModalCar />

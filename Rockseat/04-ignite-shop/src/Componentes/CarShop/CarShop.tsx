@@ -3,6 +3,7 @@ import Image from "next/image"
 import car from '../../assets/car.svg'
 import { useContext } from "react"
 import { CarContext } from "@/contexts/useCar"
+import React, { forwardRef } from 'react';
 
 export function CarShop(){
 

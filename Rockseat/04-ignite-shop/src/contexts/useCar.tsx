@@ -3,6 +3,11 @@ import { Children, ReactNode, createContext, useState } from "react"
 
 
 interface Product {
+    id: number;
+    name: string;
+    Imageurl: string;
+    price: string;
+    description: string;
     priceId: string;
     quantity: number;
   }
@@ -19,7 +24,7 @@ const initialCarState: CarShopData = {
 
 interface CarShopContextType{
   Car: CarShopData;
-  adicionarItemAoCarrinho: (priceId: string, quantity: number) => void;
+  adicionarItemAoCarrinho: (product: Product) => void;
 }
 
 
