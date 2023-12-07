@@ -8,18 +8,22 @@ import { useContext, useState } from "react";
 import axios, { Axios } from "axios";
 import Head from "next/head";
 import { CarContext } from "@/contexts/useCar";
+import { Box, Flex, Heading, ScrollArea } from "@radix-ui/themes";
 
+
+interface Product {
+  id: string;
+  name: string;
+  imageUrl: string;
+  price: string;
+  description: string;
+  priceId: string;
+  quantity: number;
+}
 
 interface ProductProps {
-    product: {
-      id: string
-      name: string
-      imageUrl: string
-      price: string
-      description: string
-      defaultPriceId: string
-    }
-  }
+  product: Product;
+}
 
 export default function Product({product}: ProductProps) {
   
@@ -28,7 +32,7 @@ export default function Product({product}: ProductProps) {
   const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = useState(false);
 
   const handleAddProducy = () => {
-    adicionarItemAoCarrinho(product.defaultPriceId,1);
+    adicionarItemAoCarrinho(product);
     router.push('/');
   };
 
@@ -65,7 +69,7 @@ export default function Product({product}: ProductProps) {
         <ProductDetails>
           <h1>{product.name}</h1>
           <span>{product.price}</span>
-
+         
           <p>{product.description}</p>
 
           <button onClick={handleAddProducy}>
@@ -104,7 +108,7 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({ para
             currency: 'BRL'
           }).format(price.unit_amount! / 100),
           description: product.description,
-          defaultPriceId: price.id
+          priceId: price.id
         }
       },
       revalidate: 60 * 60 * 1 // 1 hours

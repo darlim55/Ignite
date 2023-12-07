@@ -9,7 +9,7 @@ import { CarContext, CarShopContextProvider } from '@/contexts/useCar';
 import { CarShop } from '@/Componentes/CarShop/CarShop';
 import * as Dialog from '@radix-ui/react-dialog'
 import ModalCar from '@/Componentes/ModalCar/ModalCar';
-
+import '@radix-ui/themes/styles.css';
 globalStyles();
 
 

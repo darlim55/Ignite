@@ -12,11 +12,13 @@ export const Overlay = styled(Dialog.Overlay,{
 })
 
 export const Content = styled(Dialog.Content, {
-    minWidth: '32rem',
+    minWidth: '33vw',
+    minHeight: '100vh',
+    height: '100%',
     borderRadius: '6px',
     position: 'fixed',
     top: '5%',
-    right: '5%',
+    right: '1%',
    
     p:{
         fontSize: '2.5rem'
@@ -29,12 +31,43 @@ export const DetailsBuy = styled("div", {
     marginTop: "3rem",
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    gap: "1rem",
 
+
+    img: {
+        borderRadius: 8,
+        background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
+
+    }
 })
 
 export const InformationProduct = styled("div", {
+    display: 'flex',
+    flexDirection: 'column',
     
+    p:{
+        margin: '0',
+        fontFamily:'Roboto, sans-serif',
+        "&:first-of-type": {
+            color: "$graysacle",
+            fontWeight: 'bold',
+            fontSize: '2.0rem',
+        },
+
+        fontSize: "1.5rem"
+    },
+
+    button:{
+        cursor: 'pointer',
+        border: 'none',
+        width: '3rem',
+        height: '2rem',
+        fontSize: '$lg',
+        fontFamily:'Roboto, sans-serif',
+        color: "$green500",
+        background: 'none',
+        margin: 'auto 0 0',
+        
+    }
 
 })
 
@@ -48,8 +81,21 @@ export const InformationProductClear = styled("div", {
     textAlign: 'center',
 
     p:{
-        fontSize: '2.5rem',
+        fontSize: '2.0rem',
         fontFamily:'Roboto, sans-serif'
-    }
+    },
+    '& .ModalCarScroll': {
+        maxHeight: '100% !important',
+        overflowY: 'auto !important',
+        color: 'Green'
+      },
+
+})
+
+export const InformationTotalBuy = styled("div", {
+    marginTop: '10rem',
+    display: 'flex',
+
+
 
 })
