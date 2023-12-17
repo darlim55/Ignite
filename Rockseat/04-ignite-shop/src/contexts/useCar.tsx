@@ -3,9 +3,9 @@ import { Children, ReactNode, createContext, useState } from "react"
 
 
 interface Product {
-    id: number;
+    id: string;
     name: string;
-    Imageurl: string;
+    imageUrl: string;
     price: string;
     description: string;
     priceId: string;
@@ -39,20 +39,21 @@ export function CarShopContextProvider({children} : CarShopProviderProps){
 
     const [Car, setCar] = useState<CarShopData>(initialCarState);
 
-    function adicionarItemAoCarrinho(priceId:string, quantity: number ) {
+    function adicionarItemAoCarrinho(product: Product
+       ) {
       // Cria uma cópia do estado atual do carrinho
       const novoCar = { ...Car };
 
       // Verifica se o item já está no carrinho
-      const itemExistente = novoCar.products.find(item => item.priceId === priceId);
+      const itemExistente = novoCar.products.find(item => item.priceId === product.priceId);
 
       if (itemExistente) {
         // Se o item já existir, incrementa a quantidade
-        itemExistente.quantity += quantity;
+        itemExistente.quantity += 1
       } else {
         
         // Se o item não existir, adiciona ao carrinho
-         novoCar.products.push({ priceId, quantity });
+         novoCar.products.push({ ...product, quantity:1 });
       }
 
       // Atualiza o estado do carrinho
