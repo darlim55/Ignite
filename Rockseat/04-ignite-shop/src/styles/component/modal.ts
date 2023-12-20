@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { styled } from '../styles'
 import { Grid } from '@radix-ui/themes'
+import { ST } from 'next/dist/shared/lib/utils'
 
 export const Overlay = styled(Dialog.Overlay,{
 
@@ -93,8 +94,38 @@ export const InformationProductClear = styled("div", {
 })
 
 export const InformationTotalBuy = styled("div", {
-    marginTop: '10rem',
+    marginTop: '8rem',
     display: 'flex',
+    width: '490px',
+    flexDirection: 'column'
+
+})
+
+export const TotalbuyQuantify = styled("div", {
+
+    display: 'grid',
+    gridTemplateColumns: "auto auto",
+    fontSize: '$lg',
+    justifyContent: 'space-between',
+    fontFamily:'Roboto, sans-serif',
+    color:'$graysacle',
+
+    span: {
+        display: 'flex'
+
+    }
+
+
+})
+
+export const Totalbuy = styled("div", {
+
+    display: 'grid',
+    gridTemplateColumns: "auto auto",
+    fontSize: '$lg',
+    justifyContent: 'space-between',
+    fontFamily:'Roboto, sans-serif',
+    color:'$graysacle',
 
 
 
