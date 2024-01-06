@@ -3,7 +3,7 @@ import { styled } from "../styles/styles"
 import camiseta1 from "../assets/camisetas/1.png"
 import camiseta2 from "../assets/camisetas/2.png"
 import camisete3 from "../assets/camisetas/3.png"
-
+import buy from "../assets/buy.svg"
 import Image from "next/image"
 import { GetServerSideProps, GetStaticProps } from "next"
 import {stripe} from "../lib/stripe"
@@ -12,6 +12,8 @@ import 'keen-slider/keen-slider.min.css'
 import Stripe from "stripe"
 import Link from "next/link"
 import Head from "next/head"
+import { useContext } from "react"
+import { CarContext } from "@/contexts/useCar"
 
 interface Homeprops{
   products: {
@@ -19,6 +21,9 @@ interface Homeprops{
       name:string,
       imageUrl: string,
       price: string,
+      description: string,
+      priceId: string,
+      quantity: number
   }[]
 }
 
@@ -32,8 +37,9 @@ export default function Home({products}: Homeprops) {
 
   })
 
+    
+  const {adicionarItemAoCarrinho} = useContext(CarContext)
   return (
-
     <>
     <Head>
       <title>Home | Ignite Shop</title>
@@ -48,8 +54,17 @@ export default function Home({products}: Homeprops) {
               <Product className="keen-slider__slide">
                 <Image src={product.imageUrl} width={520} height={480} alt="" />
                 <footer>
+                  <div>
                   <strong>{product.name}</strong>
                   <span>{product.price}</span>
+                  </div>
+                  <div>
+                   <button onClick={(e) => {
+                    e.preventDefault()
+                    adicionarItemAoCarrinho(product)}} >
+                    <Image src={buy}  width={50} height={50} alt="" />
+                   </button>
+                  </div>
                 </footer>
               </Product>
             </Link>
@@ -80,6 +95,8 @@ export const getStaticProps: GetStaticProps = async() => {
         style: 'currency',
         currency: 'BRL'
       }).format(price.unit_amount! / 100),
+      description: product.description,
+      priceId: price.id
     }
   })
 

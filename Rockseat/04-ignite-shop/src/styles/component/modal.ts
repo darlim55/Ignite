@@ -1,7 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { styled } from '../styles'
-import { Grid } from '@radix-ui/themes'
-import { ST } from 'next/dist/shared/lib/utils'
 
 export const Overlay = styled(Dialog.Overlay,{
 
@@ -97,7 +95,7 @@ export const InformationTotalBuy = styled("div", {
     marginTop: '8rem',
     display: 'flex',
     width: '490px',
-    flexDirection: 'column'
+    flexDirection: 'column',
 
 })
 
@@ -121,12 +119,34 @@ export const TotalbuyQuantify = styled("div", {
 export const Totalbuy = styled("div", {
 
     display: 'grid',
+    marginTop: '0.2rem',
     gridTemplateColumns: "auto auto",
     fontSize: '$lg',
     justifyContent: 'space-between',
     fontFamily:'Roboto, sans-serif',
     color:'$graysacle',
 
+    p:{
+        fontSize: '$xl',
+    },
 
+
+
+})
+
+export const ButtonFinish = styled("button", {
+
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '1rem',
+    backgroundColor: 'green',
+    color: '$white',
+    textAlign: 'center',
+    height: '4rem',
+    fontSize: '$xl',
+    cursor: 'pointer',
+    borderColor: '$grey700',
+    border: '1px solid $gray800 '
 
 })

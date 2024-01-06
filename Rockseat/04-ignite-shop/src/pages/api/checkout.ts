@@ -3,28 +3,27 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res:NextApiResponse) {
 
-    const {priceId} = req.body
+    const {Product} = req.body
     if(req.method !== "POST"){
         return res.status(405).json({error: 'Method not allowed'});
     }
 
-    if(!priceId){
+    if(!Product){
         return res.status(400).json({error: 'Price not found .'})
     }
 
     const sucess_url = `${process.env.NEXT_URL}/sucess?session_id={CHECKOUT_SESSION_ID}`
     const cancel_url = `${process.env.NEXT_URL}/`
-
+    const lineItems = Product.map((Product: { priceId: string; quantity: number; }) => ({
+        price: Product.priceId,
+        quantity: Product.quantity,
+    }));
+    
     const checkoutSession = await stripe.checkout.sessions.create({
         success_url: sucess_url,
         cancel_url: cancel_url,
         mode: 'payment',
-        line_items: [
-            {
-                price:priceId,
-                quantity: 1,
-            }
-        ] 
+        line_items: lineItems
     })
 
     return res.status(201).json({

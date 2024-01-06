@@ -25,6 +25,7 @@ const initialCarState: CarShopData = {
 interface CarShopContextType{
   Car: CarShopData;
   adicionarItemAoCarrinho: (product: Product) => void;
+  removerCarrinho: (id: string) => void
 }
 
 
@@ -64,9 +65,18 @@ export function CarShopContextProvider({children} : CarShopProviderProps){
     
     };
 
+
+  function removerCarrinho(id: string) {
+    const novosCarros = { ...Car };
+    novosCarros.products = Car.products.filter((item) => item.id !== id);
+
+    setCar(novosCarros);
+  }
+
+
     return (
       <CarContext.Provider 
-      value={{Car, adicionarItemAoCarrinho}}>{children}</CarContext.Provider>
+      value={{Car, adicionarItemAoCarrinho, removerCarrinho}}>{children}</CarContext.Provider>
     )
 
 }
